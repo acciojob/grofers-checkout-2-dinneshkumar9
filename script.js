@@ -1,5 +1,5 @@
 // Get all the price elements
-const priceElements = document.querySelectorAll('[data-ns-test="prices"]');
+const priceElements = document.querySelectorAll('[data-ns-test="price"]');
 
 // Check the number of price elements
 if (priceElements.length === 0) {
