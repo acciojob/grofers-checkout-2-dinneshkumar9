@@ -1,28 +1,24 @@
-//your code here
-// Get all the price elements
-const priceElements = document.querySelectorAll('[data-ns-test="prices"]');
+const getSumBtn = document.createElement("button");
+getSumBtn.append("Get Total Price");
+document.body.appendChild(getSumBtn);
 
-// Check the number of price elements
-if (priceElements.length === 0) {
-  console.error('No price elements found');
-} else {
-  console.log(`Found ${priceElements.length} price elements`);
-
-  // Calculate the total price
-  let totalPrice = 0;
-  priceElements.forEach(priceElement => {
-    totalPrice += parseFloat(priceElement.textContent);
-  });
-
-  // Add the total price to the table
-  const grandTotalElement = document.querySelector('[data-ns-test="grandTotal"]');
-  grandTotalElement.textContent = totalPrice.toFixed(2);
-
-  // Check if the grand total matches the sum of prices
-  const expectedGrandTotal = priceElements.length > 0 ? totalPrice.toFixed(2) : '';
-  if (grandTotalElement.textContent !== expectedGrandTotal) {
-    console.error(`Grand total (${grandTotalElement.textContent}) does not match sum of prices (${expectedGrandTotal})`);
-  } else {
-    console.log(`Grand total (${grandTotalElement.textContent}) matches sum of prices (${expectedGrandTotal})`);
+const getSum = () => {
+//Add your code here
+  let pricesEl = document.getElementsByClassName('price');
+  let sum = 0;
+  for (let i = 0; i < pricesEl.length; i++) {
+    let x = Number(pricesEl[i].innerText);
+    sum += x;
   }
-}
+    // console.log(`TotalSum: ${sum}`);
+    const emptyRow = document.createElement("tr");
+    emptyRow.innerHTML = `
+    <td></td><td>${sum}</td>
+    `
+    // document.getElementById('tab').appendChild(emptyRow);
+    document.getElementById('tab').innerHTML += `<tr id="ans">
+    <td></td><td>${sum}</td>
+        </tr>`
+};
+
+getSumBtn.addEventListener("click", getSum);
